@@ -1,0 +1,126 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* body{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    animation: fills_background 0.5s ease forwards 3s;
+} */
+
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    animation: fills_black 0.8s ease forwards 4s;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    
+    animation: fills_background 0.5s ease forwards 3.1s;
+}
+        
+          
+          
+
+
+
+#logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: fills 0.5s ease forwards 3s;
+}
+
+
+#logo path:nth-child(1){
+    stroke-dasharray: 1730px;
+    stroke-dashoffset: 1730px;
+    animation: line-anime 12s ease forwards ;
+}
+#logo path:nth-child(2){   
+    stroke-dasharray: 371px;
+    stroke-dashoffset: 371px;
+    animation: line-anime 2s ease forwards 1s;
+}
+#logo path:nth-child(3){   
+    stroke-dasharray: 375px;
+    stroke-dashoffset: 375px;
+    animation: line-anime 2s ease forwards 1.3s;
+}
+#logo path:nth-child(4){
+    stroke-dasharray: 628px;
+    stroke-dashoffset: 628px;
+    animation: line-anime 2s ease forwards 1.6s;   
+}
+#logo rect:nth-child(5){
+    stroke-dasharray: 38px;
+    stroke-dashoffset: 38px;
+    animation: line-anime 2s ease forwards 1.9s; 
+}
+#logo path:nth-child(6){   
+    stroke-dasharray: 449px;
+    stroke-dashoffset: 449px;
+    animation: line-anime 2s ease forwards 2.2s; 
+}
+#logo path:nth-child(7){   
+    stroke-dasharray: 496px;
+    stroke-dashoffset: 496px;
+    animation: line-anime 2s ease forwards 2.5s; 
+}
+#logo path:nth-child(8){   
+    stroke-dasharray: 536px;
+    stroke-dashoffset: 536px;
+    animation: line-anime 2s ease forwards 2.8s; 
+}
+#logo path:nth-child(9){   
+    stroke-dasharray: 536px;
+    stroke-dashoffset: 536px;
+    animation: line-anime 2s ease forwards 3.1s; 
+}
+
+
+
+@keyframes line-anime {
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fills{
+    from{
+        fill: transparent;
+    }
+    to{
+        fill:white;
+    }
+}
+
+@keyframes fills_background{
+    form{
+        background-color: black;
+    }
+    to{
+        background: linear-gradient(to left, #03A6F8, #3468FF);
+    }
+}
+
+@keyframes fills_black{
+    from{
+        opacity: 1;
+        
+    }
+    to{
+
+        opacity: 0;
+    }  
+}

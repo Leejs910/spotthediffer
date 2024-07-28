@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다른그림찾기</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+</head>
+<!-- <script src="/js/jQuery.js"></script>
+<script src="/js/rwdImageMaps.js"></script> -->
+<script src="./js/preEventDefault.js"></script>
+
+
+
+
+<body>
+
+    <div class="containerG fade">
+
+        <div id="navi">
+            <h2 class="steps"><span style="font-size: 0.8em;">&#9660;</span>&nbsp 1 단계
+                <div class="dropdown-content">
+                    <a href="./game2.html" style="margin-top: 0.8em;">2 단계</a>
+                    <a href="./game3.html">3 단계</a>
+                    <a href="./game4.html">4 단계</a>
+                    <a href="./game5.html">5 단계</a>
+                    <a href="./game6.html">6 단계</a>
+                    
+                </div>
+            </h2>
+            <h2 id="finishMessage">■ &nbsp&nbsp&nbsp 왼쪽 그림과 다른 부분을 오른쪽 그림에서 찾아 터치하세요</h2>
+            <h2 id="hint">힌트</h2>
+            <!-- The Modal -->
+            <div id="myHints" class="myHint">
+
+                <!-- Modal content -->
+                <div class="hint-content">
+                    <span class="close">&times;</span>
+                    <p>1 . 눈사람 </p>
+                    <p>2 . 나무 </p>
+                    <p>3 . 얼굴 </p>
+                    <p>4 . 바닥 </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 220px;">
+                    <p>5 . 발자국 </p>
+                    <div id="hint1" style=" float: right;" class="hint" onclick= "">정답 미리보기</div>
+                    </div>
+                </div>
+
+                <!-- Modal content 2 이미지 -->
+                <div class="hint-content2">
+                    <span class="close">&times;</span>
+                    <img style=" position:relative; width: auto; height: 340px; border: 0.4rem solid #707070;border-radius: 1ch; transform: translateY(-30px);"
+                    src="./img/pic1Correct.png" alt="">
+                </div>
+
+
+            </div>
+            <h2><img src="/img/home_bt.svg" alt="home" class="home_icon" onclick="location.href='/index.html'"></h2>
+        </div>
+
+        <div class="picture">
+            <div>
+                <canvas id="box1" width="612" height="552">
+                </canvas>
+            </div>
+            <div>
+                <img src="img/transparent.svg" alt="" usemap="#imgMap1" id="transparent">
+                <canvas id="box2" width="612" height="552">
+                </canvas>
+            </div>
+
+            <map name="imgMap1" id="maps">
+                <area shape="circle" alt="" title="map" class="map" coords="92,465,43" style="cursor: default;"
+                    href="#" />
+                <area shape="circle" alt="" title="map" class="map" coords="218,169,43" style="cursor: default;"
+                    href="#" />
+                <area shape="circle" alt="" title="map" class="map" coords="460,261,43" style="cursor: default;"
+                    href="#" />
+                <area shape="circle" alt="" title="map" class="map" coords="307,434,43" style="cursor: default;"
+                    href="#" />
+                <area shape="circle" alt="" title="map" class="map" coords="472,76,43" style="cursor: default;"
+                    href="#" />
+            </map>
+        </div>
+        <div class="footer"> 
+        <div style="justify-self: end;">정답 :</div> 
+        <div id="numbersToGo" style="justify-self: end;"> 0</div>
+        <div style="justify-self: start;">&nbsp; /&nbsp; 5 개</div>
+        <div>남은 횟수 :</div>
+        <div id="numbersToLife" style="justify-self: end;"> 0</div>
+            <div>&nbsp;/&nbsp; 20 개</div> 
+        </div>
+        <!-- <h2 class="footer"> 정답: <span id="numbersToGo">0</span> / 5 개 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            남은 횟수 : <span id="numbersToLife">0</span> / 20 개</h2> -->
+        
+
+
+
+    </div>
+
+    <!-- 성공 modal 팝업창 -->
+
+    <div class="modal_container fadeB" id="modal-container">
+        <p class="congrateModal bounce" style="background-color: white; color:#56a5eb;border: 0.4rem solid #707070;border-radius: .3ch;font-size: 5em; padding: .3em; margin-bottom: .6em; font-weight: bold;">축하합니다. 다음 단계 시작하세요!</p>
+        <button class="btn" onclick="location.href='/game2.html'">다음단계로 이동</button>
+        <button class="btn" onclick="location.href='/index.html'">홈화면으로 이동</button>
+
+        <div class="firework"id="firework1">
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+    
+        </div>
+    
+        <div class="firework"id="firework2">
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+    
+        </div>
+        
+        <div class="firework"id="firework3">
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+    
+        </div>
+
+        <div class="firework"id="firework4">
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+    
+        </div>
+
+        <div class="firework"id="firework5">
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+    
+        </div>
+
+        <div class="firework"id="firework6">
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+            <div class="explosion"></div>
+    
+        </div>
+    
+    </div>
+
+    <!-- 실패 modal 팝업창 -->
+
+    <div class="modal_containerB fadeB" id="modal-containerB">
+        <p class="failModal bounce" style="background-color: white; color:#eb5656;border: 0.4rem solid #707070;border-radius: .3ch;font-size: 5em; padding: .3em; margin-bottom: .6em; font-weight: bold;">실패했습니다. 다시 시작하세요!</p>
+        <button class="btn" onclick="location.href='/game.html'">다시시작하기</button>
+        <button class="btn" onclick="location.href='/index.html'">홈화면으로 이동</button>
+    </div>
+
+
+    <!-- 아래는 뒷배경 움직이는 사각형 애니메이션 입니다. -->
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- 아래는 폭죽 애니메이션 창입니다 -->
+    
+
+</html>
+
+<!--자바 스크립트 코드  -->
+<script>
+    //박스 선택
+    var myCanvas = document.querySelector('#box2')
+    //투명박스 선택
+    var transparent = document.querySelector('#transparent')
+    //문제수//
+    var numberToGo = 5;
+    //문제 선택//
+    var numbersToGoInput = document.getElementById('numbersToGo');
+    //문제 내부html//
+    numbersToGoInput.innerHTML = numberToGo;
+
+    //생명 게이지 //
+    var numbersToLife = 20;
+
+    var numbersToLifeInput = document.getElementById('numbersToLife')
+
+    // 생명 내부 html //
+    numbersToLifeInput.innerHTML = numbersToLife;
+
+    // 힌트 버튼 // 
+    var hint = document.querySelector('#hint');
+    // 힌트 모달 //
+    var myHint = document.getElementById('myHints');
+
+    // 정답 미리보기 이미지 
+    var myHint2 = document.querySelector('.hint-content2')
+    // 힌트 정답 미리보기 버튼
+    var hint2 = document.querySelector('#hint1');
+
+    //힌트 모달을 닫는 span 요소
+    
+    var span = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementsByClassName("close")[1];
+
+    hint2.onclick = function(){
+        myHint2.style.display = "grid";
+    }
+
+    // 힌트를 클릭하면 모달이 나타남
+    hint.onclick = function(){
+        myHint.style.display = "block";
+    }
+
+
+    //유저가 x(span)을 클릭하면, 모달이 닫힘 //
+    span.onclick =function(){
+        myHint.style.display ="none";
+    }
+    span2.onclick =function(){
+        myHint.style.display ="none";
+        myHint2.style.display = "none";
+    }
+
+    //유저가 바깥쪽을 클릭하면 닫히는 함수 
+
+    window.onclick = function(event) {
+        if(event.target== myHint){
+            myHint.style.display ="none";
+            myHint2.style.display = "none";
+        }
+    }
+
+
+
+
+    // 이미지 맵 //
+    let maps = document.querySelectorAll("#maps,#maps .map")
+    // 원그리기 선언//
+    let c = document.getElementById("box2");
+    var ctx = c.getContext("2d");
+    var radius = 43;
+    var endPercent =27;
+    var quart = Math.PI/2;
+    
+    //영역을 터치했을 경우 1//
+    maps[1].addEventListener('click', function (event) { 
+        
+        playAudioCorrect()
+        var CurPer =0;
+        var interval=setInterval(
+            function draw(currentPerc){
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = 'white';
+            ctx.arc(90, 480, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'rgba(56, 237, 56, 1.0)';
+            ctx.arc(90, 480, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+
+            CurPer++
+            if(CurPer<endPercent){
+                requestAnimationFrame(function(){
+
+                    draw(CurPer/100)
+                });
+            }
+            if(CurPer>endPercent){
+                clearInterval(interval)
+            }
+        },100);
+        
+        numberToGo = numberToGo - 1;
+        numbersToGoInput.innerHTML = numberToGo;
+        showFinished(numberToGo);
+        //     setTimeout(transparent.style ='background-color : none',500);
+        // 
+        
+        numbersToGoInput.classList.add('paintGreenText');
+        setTimeout(()=>{
+            numbersToGoInput.classList.remove('paintGreenText')
+        },801);
+    }, { once: true });
+
+    //영역을 터치했을 경우 2//
+    maps[2].addEventListener('click', function (event) {
+        playAudioCorrect()
+        var CurPer =0;
+        var interval=setInterval(
+            function draw(currentPerc){
+                ctx.lineWidth = 10;
+            ctx.strokeStyle = 'white';
+            ctx.arc(218, 169, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'rgba(56, 237, 56, 1.0)';
+            ctx.arc(218, 169, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            CurPer++
+            if(CurPer<endPercent){
+                requestAnimationFrame(function(){
+
+                    draw(CurPer/100)
+                });
+            }
+            if(CurPer>endPercent){
+                clearInterval(interval)
+            }
+        },100);
+        numberToGo = numberToGo - 1;
+        numbersToGoInput.innerHTML = numberToGo;
+        showFinished(numberToGo);
+
+        numbersToGoInput.classList.add('paintGreenText');
+        setTimeout(()=>{
+            numbersToGoInput.classList.remove('paintGreenText')
+        },801);
+        
+    }, { once: true });
+
+    //영역을 터치했을 경우 3//
+    maps[3].addEventListener('click', function (event) {
+        playAudioCorrect()
+        var CurPer =0;
+        var interval=setInterval(
+            function draw(currentPerc){
+                ctx.lineWidth = 10;
+            ctx.strokeStyle = 'white';
+            ctx.arc(460, 261, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'rgba(56, 237, 56, 1.0)';
+            ctx.arc(460, 261, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            CurPer++
+            if(CurPer<endPercent){
+                requestAnimationFrame(function(){
+
+                    draw(CurPer/100)
+                });
+            }
+            if(CurPer>endPercent){
+                clearInterval(interval)
+            }
+        },100);
+        numberToGo = numberToGo - 1;
+        numbersToGoInput.innerHTML = numberToGo;
+        showFinished(numberToGo);
+
+        numbersToGoInput.classList.add('paintGreenText');
+        setTimeout(()=>{
+            numbersToGoInput.classList.remove('paintGreenText')
+        },801);
+    }, { once: true });
+
+    //영역을 터치했을 경우 4//
+    maps[4].addEventListener('click', function (event) {
+        playAudioCorrect()
+        var CurPer =0;
+        var interval=setInterval(
+            function draw(currentPerc){
+                ctx.lineWidth = 10;
+            ctx.strokeStyle = 'white';
+            ctx.arc(307, 434, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'rgba(56, 237, 56, 1.0)';
+            ctx.arc(307, 434, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            CurPer++
+            if(CurPer<endPercent){
+                requestAnimationFrame(function(){
+
+                    draw(CurPer/100)
+                });
+            }
+            if(CurPer>endPercent){
+                clearInterval(interval)
+            }
+        },100);
+        numberToGo = numberToGo - 1;
+        numbersToGoInput.innerHTML = numberToGo;
+        showFinished(numberToGo);
+
+        numbersToGoInput.classList.add('paintGreenText');
+        setTimeout(()=>{
+            numbersToGoInput.classList.remove('paintGreenText')
+        },801);
+    }, { once: true });
+    //영역을 터치했을 경우 5//
+    maps[5].addEventListener('click', function (event) {
+        playAudioCorrect()
+        var CurPer =0;
+        var interval=setInterval(
+            function draw(currentPerc){
+                ctx.lineWidth = 10;
+            ctx.strokeStyle = 'white';
+            ctx.arc(472, 76, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = 'rgba(56, 237, 56, 1.0)';
+            ctx.arc(472, 76, radius,-quart,(CurPer*currentPerc)-quart,false);
+            ctx.stroke();
+            ctx.beginPath();
+            CurPer++
+            if(CurPer<endPercent){
+                requestAnimationFrame(function(){
+
+                    draw(CurPer/100)
+                });
+            }
+            if(CurPer>endPercent){
+                clearInterval(interval)
+            }
+        },100);
+        numberToGo = numberToGo - 1;
+        numbersToGoInput.innerHTML = numberToGo;
+        showFinished(numberToGo);
+
+        numbersToGoInput.classList.add('paintGreenText');
+        setTimeout(()=>{
+            numbersToGoInput.classList.remove('paintGreenText')
+        },801);
+    }, { once: true });
+
+    //영역외 터치//
+    transparent.addEventListener('click', function () {
+        console.log('영역외')
+        wrongAnswer();
+        playAudioWrong();
+        showEnd(numbersToLife);
+        numbersToLifeInput.classList.add('paintRedText');
+        setTimeout(()=>{
+            numbersToLifeInput.classList.remove('paintRedText')
+        },301);
+        
+       
+    })
+
+
+
+    // 영역외 터치 함수 //
+
+    function wrongAnswer() {
+        // transparent.style = 'background-color: rgba(255, 0, 0, 38%)';
+        
+        c.classList.add("vibration");
+        transparent.classList.add("paintRed");
+        setTimeout(function () {
+            c.classList.remove("vibration");
+            transparent.classList.remove("paintRed");
+        }, 150);
+
+        numbersToLife = numbersToLife - 1;
+        numbersToLifeInput.innerHTML = String(numbersToLife).padStart(2, "0");
+        
+        
+       
+
+    }
+
+
+
+    //게임 성공 -> 다음단계로// 
+    function showFinished($num) {
+        if ($num == 0) {
+
+            var fireworks = document.querySelectorAll('.firework')
+            var modalContainer = document.getElementById('modal-container')
+            playAudioComplete()
+            // var finishMessage = document.getElementById('finishMessage');
+            // finishMessage.innerHTML = "축하합니다. 다음 단계 시작하세요!"
+            // finishMessage.style = "color:green"
+            setTimeout(() => {
+                modalContainer.style = 'display:flex';
+            }, 1 * 50)
+
+                // 게임 퍼펙트 (틀린갯수 =0) 성공 
+    
+        if(numbersToLife == 20){
+            fireworks[0].style = "display:flex";
+            fireworks[1].style = "display:flex";
+            fireworks[2].style = "display:flex";
+            fireworks[3].style = "display:flex";
+            fireworks[4].style = "display:flex";
+            fireworks[5].style = "display:flex";
+            playAudioCompleteP()
+        };
+        }
+    };
+
+    //게임 실패 -> 다음 시도하기// 
+    function showEnd($num) {
+        if ($num == 0) {
+
+            var modalContainerB = document.getElementById('modal-containerB')
+            var failMessage = document.querySelector('.failModal')
+            // var finishMessage = document.getElementById('finishMessage');
+            // finishMessage.innerHTML = "실패했습니다. 다시 시작하세요!"
+            // finishMessage.style = "color:red"
+            setTimeout(() => {
+                modalContainerB.style = 'display:flex';
+            }, 1 * 50)
+
+        }
+    }
+
+
+
+    // 오디오 //
+
+    function playAudioWrong(){
+        var soundWrong = new Audio();
+        soundWrong.src ="./audio/wrongSound.mp3"
+        soundWrong.play();
+    }
+
+    function playAudioCorrect(){
+        var soundCorrect = new Audio();
+        soundCorrect.src ="./audio/correct2.mp3"
+        soundCorrect.play();
+    }
+
+    function playAudioComplete(){
+        var soundComplete = new Audio();
+        soundComplete.src ="./audio/nextlevel.mp3"
+        soundComplete.play();
+    }
+
+    function playAudioCompleteP(){
+        var playAudioCompleteP = new Audio();
+        playAudioCompleteP.src = "./audio/congrate.mp3"
+        playAudioCompleteP.play();
+    }
+
+</script>
