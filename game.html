@@ -6,13 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>다른그림찾기</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 </head>
-<!-- <script src="/js/jQuery.js"></script>
-<script src="/js/rwdImageMaps.js"></script> -->
-<script src="./js/preEventDefault.js"></script>
+<script src="js/preEventDefault.js"></script>
 
 
 
@@ -24,11 +22,11 @@
         <div id="navi">
             <h2 class="steps"><span style="font-size: 0.8em;">&#9660;</span>&nbsp 1 단계
                 <div class="dropdown-content">
-                    <a href="./game2.html" style="margin-top: 0.8em;">2 단계</a>
-                    <a href="./game3.html">3 단계</a>
-                    <a href="./game4.html">4 단계</a>
-                    <a href="./game5.html">5 단계</a>
-                    <a href="./game6.html">6 단계</a>
+                    <a href="game2.html" style="margin-top: 0.8em;">2 단계</a>
+                    <a href="game3.html">3 단계</a>
+                    <a href="game4.html">4 단계</a>
+                    <a href="game5.html">5 단계</a>
+                    <a href="game6.html">6 단계</a>
                     
                 </div>
             </h2>
@@ -54,12 +52,12 @@
                 <div class="hint-content2">
                     <span class="close">&times;</span>
                     <img style=" position:relative; width: auto; height: 340px; border: 0.4rem solid #707070;border-radius: 1ch; transform: translateY(-30px);"
-                    src="./img/pic1Correct.png" alt="">
+                    src="img/pic1Correct.png" alt="">
                 </div>
 
 
             </div>
-            <h2><img src="/img/home_bt.svg" alt="home" class="home_icon" onclick="location.href='/index.html'"></h2>
+            <h2><img src="img/home_bt.svg" alt="home" class="home_icon" onclick="location.href='index.html'"></h2>
         </div>
 
         <div class="picture">
@@ -106,8 +104,8 @@
 
     <div class="modal_container fadeB" id="modal-container">
         <p class="congrateModal bounce" style="background-color: white; color:#56a5eb;border: 0.4rem solid #707070;border-radius: .3ch;font-size: 5em; padding: .3em; margin-bottom: .6em; font-weight: bold;">축하합니다. 다음 단계 시작하세요!</p>
-        <button class="btn" onclick="location.href='/game2.html'">다음단계로 이동</button>
-        <button class="btn" onclick="location.href='/index.html'">홈화면으로 이동</button>
+        <button class="btn" onclick="location.href='game2.html'">다음단계로 이동</button>
+        <button class="btn" onclick="location.href='index.html'">홈화면으로 이동</button>
 
         <div class="firework"id="firework1">
             <div class="explosion"></div>
@@ -211,8 +209,8 @@
 
     <div class="modal_containerB fadeB" id="modal-containerB">
         <p class="failModal bounce" style="background-color: white; color:#eb5656;border: 0.4rem solid #707070;border-radius: .3ch;font-size: 5em; padding: .3em; margin-bottom: .6em; font-weight: bold;">실패했습니다. 다시 시작하세요!</p>
-        <button class="btn" onclick="location.href='/game.html'">다시시작하기</button>
-        <button class="btn" onclick="location.href='/index.html'">홈화면으로 이동</button>
+        <button class="btn" onclick="location.href='game.html'">다시시작하기</button>
+        <button class="btn" onclick="location.href='index.html'">홈화면으로 이동</button>
     </div>
 
 
@@ -586,25 +584,25 @@
 
     function playAudioWrong(){
         var soundWrong = new Audio();
-        soundWrong.src ="./audio/wrongSound.mp3"
+        soundWrong.src ="audio/wrongSound.mp3"
         soundWrong.play();
     }
 
     function playAudioCorrect(){
         var soundCorrect = new Audio();
-        soundCorrect.src ="./audio/correct2.mp3"
+        soundCorrect.src ="audio/correct2.mp3"
         soundCorrect.play();
     }
 
     function playAudioComplete(){
         var soundComplete = new Audio();
-        soundComplete.src ="./audio/nextlevel.mp3"
+        soundComplete.src ="audio/nextlevel.mp3"
         soundComplete.play();
     }
 
     function playAudioCompleteP(){
         var playAudioCompleteP = new Audio();
-        playAudioCompleteP.src = "./audio/congrate.mp3"
+        playAudioCompleteP.src = "audio/congrate.mp3"
         playAudioCompleteP.play();
     }
 
